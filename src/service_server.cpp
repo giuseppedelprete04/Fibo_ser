@@ -13,13 +13,13 @@ bool service_callback (ros_fibo::service::Request &req, ros_fibo::service::Respo
 	vec[0]=0;
 	vec[1]=1;
 	int sum = 0; 
-	if(length<=0) {
+	if(length<=0 || index <0) {
 		cout<<"Couldn't answer to request, please control that 			all the values are correct!";
 	}
 	else {
-		for (int i=0; i<(index+1); i++) {
+		for (int i=0; i<(index+length-1); i++) {
 			
-			if(i>=index-(length-1)) {
+			if(i>=index-1) {
 				char info[50];
 				sprintf(info,"f[%d] = %d\n", i+1,sum);
 				res.fib_seq =res.fib_seq+info;
